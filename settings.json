@@ -1,0 +1,51 @@
+{
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontSize": 15,
+    "editor.lineHeight": 23,
+    "editor.letterSpacing": 0.25,
+    "editor.mouseWheelZoom": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          
+          {
+            "scope": [
+              "comment.block",
+              "comment",
+              "keyword.operator.logical",
+              "keyword.control",
+              "keyword.operator",
+              "keyword.operator.arithmetic",
+              "keyword.operator.assignment",
+              "keyword.other",
+              "keyword.control.flow.python",
+              "meta.function-call.generic.python",
+              "support.function",
+              "keyword.control.import.python",
+              "entity.name.type.class",
+              "entity.name.function"
+              
+              
+               // Add scopes name to this array
+            ],
+            "settings": {
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": [
+              "variable.parameter.function.language.python"
+              
+              
+              
+               // Add scopes name to this array
+            ],
+            "settings": {
+              // "fontStyle": "bold"
+            }
+          }
+        ]
+    },
+    "editor.fontFamily": "'Inconsolata', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"
+}
