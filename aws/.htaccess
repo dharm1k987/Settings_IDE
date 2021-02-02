@@ -1,1 +1,6 @@
-../.htaccess
+# put in subdirectory
+# generate passwd with htpasswd 
+AuthType Basic
+AuthName "Password Required"
+AuthUserFile "/usr/local/apache/passwd/passwords"
+Require user dharmik
