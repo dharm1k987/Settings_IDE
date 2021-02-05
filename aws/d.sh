@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+	echo "./d.sh [folder]"
+	exit;
+fi
+
+mkdir -p "$1"
+
 #course="investing-in-stocks-the-complete-course-11-hour"
 #course="mastering-data-structures-algorithms-using-c-andc"
 course="the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert"
@@ -39,12 +46,12 @@ do
 		if [[ ! -z "$gdrive" ]]
 		then
 			printf "\nSection $i , Part $j"
-			/usr/bin/gdrive.sh "$gdrive" "$dir" &
+			/usr/bin/gdrive.sh "$gdrive" "$1/$dir" &
 		else
 			basename=$(basename -- "$final")
 			escaped=$(echo $basename | sed 's@+@ @g;s@%@\\x@g' | xargs -0 printf "%b")
 			printf "\nDownloading $escaped ..."
-			curl -s -L "$final" -o "$dir/$escaped" &
+			curl -s -L "$final" -o "$1/$dir/$escaped" &
 		fi
 		printf "\n"
 
