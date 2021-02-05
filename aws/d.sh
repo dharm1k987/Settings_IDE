@@ -19,19 +19,19 @@ readarray -t lines <<< "$(echo $sections | grep -oP "\K(Section \d+:.*?)(?=<\/h2
 #lines=("${lines[@]:5}")
 printf -- "%s\n" "${lines[@]}"
 len=${#lines[@]}
-len=2
+#len=2
 read -p "Continue? (y/n): " cont
 if [ "$cont" != "y" ]; then
 	exit
 fi
 
-for (( i=0; i<${len}; i++ ));
+for (( i=2; i<${len}; i++ ));
 
 do
 	dir="${lines[$i]}"
 	dir=$(echo $dir | sed 's/:/-/g')
 	printf "\ndir is $dir"
-	mkdir -p "$dir"
+	mkdir -p "$1/$dir"
 
 	for j in {0..100}
 	do
