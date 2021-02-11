@@ -1,5 +1,5 @@
 home="/home/ubuntu"
-files=("$home/.bashrc" "$home/.htaccess" "$home/.profile" "$home/.pythoncwd.py" "/mnt/hdd/a.py" "/mnt/hdd/d.sh" "/etc/apache2/apache2.conf" "/usr/bin/gdrive.sh")
+files=("$home/.bashrc" "$home/.htaccess" "$home/.profile" "$home/.pythoncwd.py" "/mnt/hdd/a.py" "/mnt/hdd/d.sh" "/etc/apache2/apache2.conf" "/usr/bin/gdrive.sh" "$home/.ssh/authorized_keys")
 for file in ${files[@]};
 do
 	if [[ -d "$file" ]]; then
