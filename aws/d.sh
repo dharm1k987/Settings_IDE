@@ -9,7 +9,8 @@ mkdir -p "$1"
 
 #course="investing-in-stocks-the-complete-course-11-hour"
 #course="mastering-data-structures-algorithms-using-c-andc"
-course="the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert"
+#course="the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert"
+course="react-the-complete-guide-incl-hooks-react-router-reduxs"
 domain="https://www.learningcrux.com"
 main="$domain/course/$course"
 play="$domain/play/$course"
@@ -19,13 +20,13 @@ readarray -t lines <<< "$(echo $sections | grep -oP "\K(Section \d+:.*?)(?=<\/h2
 #lines=("${lines[@]:5}")
 printf -- "%s\n" "${lines[@]}"
 len=${#lines[@]}
-#len=2
+len=1
 read -p "Continue? (y/n): " cont
 if [ "$cont" != "y" ]; then
 	exit
 fi
 
-for (( i=2; i<${len}; i++ ));
+for (( i=0; i<${len}; i++ ));
 
 do
 	dir="${lines[$i]}"
@@ -38,6 +39,12 @@ do
 		url="$play/$i/$j/720"
 		final=$(curl -w "%{url_effective}" -I -L -s -S "$url" -o /dev/null)
 		gdrive=$(echo $final | grep -oP "\*\/\K(.+)(?=\?e=download)")
+		gdrive2=$(echo $final | grep -oP "\/uc\?id=\K(.+)(?=\&export=download)")
+		if [[ -z "$gdrive" ]]
+		then
+			gdrive="$gdrive2"
+		fi
+
 		if [ "$url" = "$final" ]; then
 			printf "\nSkip onto next iteration\n---------------------\n"
 			break
@@ -46,6 +53,7 @@ do
 		if [[ ! -z "$gdrive" ]]
 		then
 			printf "\nSection $i , Part $j"
+			printf "/usr/bin/gdrive.sh \"$gdrive\" \"$1/dir\""
 			/usr/bin/gdrive.sh "$gdrive" "$1/$dir" &
 		else
 			basename=$(basename -- "$final")
