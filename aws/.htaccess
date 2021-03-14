@@ -1,6 +1,6 @@
 # put in subdirectory
 # generate passwd with htpasswd 
-# mkdir -p /usr/local/apache/passwd && htpasswd -c /usr/local/apache/passwd dharmik
+# mkdir -p /usr/local/apache/passwd && htpasswd -c /usr/local/apache/passwd/passwords dharmik
 AuthType Basic
 AuthName "Password Required"
 AuthUserFile "/usr/local/apache/passwd/passwords"
